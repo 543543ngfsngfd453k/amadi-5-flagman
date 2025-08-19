@@ -1,0 +1,753 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-red: #dc2626;
+  --primary-purple: #fa888e;
+  --primary-blue: #fa888e;
+  --primary-mint: #fa888e;
+  --dark-bg: #0f0f1a;
+  --card-bg: #1a1a2e;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--dark-bg);
+  color: white;
+  min-height: 100vh;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a2e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #dc2626, #ef4444);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #ef4444, #dc2626);
+}
+
+/* Smooth animations */
+* {
+  transition: all 0.3s ease;
+}
+
+/* Gradient text utilities */
+.gradient-text {
+  background: linear-gradient(to right, #dc2626, #ef4444);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gradient-text-alt {
+  background: linear-gradient(to right, var(--primary-red), var(--primary-red));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Gradient borders */
+.gradient-border {
+  position: relative;
+  border-radius: 1rem;
+  background: var(--card-bg);
+}
+
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 1.1rem;
+  background: linear-gradient(to right, var(--primary-red), var(--primary-red));
+  z-index: -1;
+  transition: opacity 0.3s ease;
+  opacity: 0.7;
+}
+
+.gradient-border:hover::before {
+  opacity: 1;
+}
+
+/* Button styles */
+.gradient-button {
+  background: linear-gradient(to right, var(--primary-red), var(--primary-red));
+  color: white;
+  font-weight: bold;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.gradient-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(250, 136, 142, 0.3);
+}
+
+.gradient-button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transition: left 1s;
+}
+
+.gradient-button:hover::after {
+  left: 100%;
+}
+
+.gradient-button-alt {
+  background: linear-gradient(to right, var(--primary-red), var(--primary-red));
+  color: var(--dark-bg);
+}
+
+/* Card styles */
+.casino-card {
+  background: var(--card-bg);
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.casino-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Social button styles */
+.social-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.social-button:hover {
+  transform: translateY(-3px);
+}
+
+.social-button.instagram {
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+
+.social-button.kick {
+  background: #53fc18;
+  color: #111;
+}
+
+.social-button.twitter {
+  background: #1da1f2;
+}
+
+/* Seamless floating animations */
+@keyframes seamless-float-1 {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(15px, -20px) rotate(2deg);
+  }
+  50% {
+    transform: translate(-10px, -35px) rotate(0deg);
+  }
+  75% {
+    transform: translate(-20px, -15px) rotate(-2deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+@keyframes seamless-float-2 {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  20% {
+    transform: translate(-15px, -25px) rotate(-2deg);
+  }
+  40% {
+    transform: translate(10px, -40px) rotate(1deg);
+  }
+  60% {
+    transform: translate(20px, -45px) rotate(2deg);
+  }
+  80% {
+    transform: translate(-5px, -20px) rotate(0deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+@keyframes seamless-float-3 {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  30% {
+    transform: translate(12px, -18px) rotate(1deg);
+  }
+  60% {
+    transform: translate(-18px, -30px) rotate(-1deg);
+  }
+  90% {
+    transform: translate(8px, -12px) rotate(0deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+@keyframes seamless-float-4 {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  15% {
+    transform: translate(-10px, -15px) rotate(-1deg);
+  }
+  35% {
+    transform: translate(15px, -28px) rotate(2deg);
+  }
+  55% {
+    transform: translate(-8px, -38px) rotate(0deg);
+  }
+  75% {
+    transform: translate(12px, -22px) rotate(1deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+/* Seamless floating animation classes */
+.seamless-float-1 {
+  animation: seamless-float-1 14s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+  opacity: 0.8;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.seamless-float-2 {
+  animation: seamless-float-2 16s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+  opacity: 0.8;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.seamless-float-3 {
+  animation: seamless-float-3 18s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+  opacity: 0.8;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.seamless-float-4 {
+  animation: seamless-float-4 20s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+  opacity: 0.8;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* New pulsating circle animations */
+@keyframes pulse-circle {
+  0% {
+    opacity: 0.2;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  100% {
+    opacity: 0.2;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+}
+
+@keyframes pulse-circle-delayed {
+  0% {
+    opacity: 0.1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: translate(-50%, -50%) scale(1.3);
+  }
+  100% {
+    opacity: 0.1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.animate-pulse-circle {
+  animation: pulse-circle 4s ease-in-out infinite;
+}
+
+.animate-pulse-circle-delayed {
+  animation: pulse-circle-delayed 4s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+/* Added slower, smoother pulse animation for flagman logo */
+@keyframes flagman-logo-pulse {
+  0%,
+  100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+.flagman-logo-pulse {
+  animation: flagman-logo-pulse 4s ease-in-out infinite;
+}
+
+/* Remove animation on mobile and set static scale to 1.7 */
+@media (max-width: 767px) {
+  .flagman-logo-pulse {
+    animation: none;
+    transform: scale(1.7) !important;
+    /* Remove all transitions on mobile to keep logo at fixed size */
+    transition: none !important;
+  }
+
+  /* Ensure flagman logo stays at scale 1.7 even when clicked, active, focused, or hovered on mobile */
+  .flagman-container:hover .flagman-logo-pulse,
+  .flagman-container:active .flagman-logo-pulse,
+  .flagman-container:focus .flagman-logo-pulse,
+  .flagman-container .flagman-logo-pulse:hover,
+  .flagman-container .flagman-logo-pulse:active,
+  .flagman-container .flagman-logo-pulse:focus {
+    transform: scale(1.7) !important;
+    animation: none !important;
+    /* Remove transitions on all interaction states for mobile */
+    transition: none !important;
+  }
+}
+
+/* Mobile-specific flagman logo pulse animation with scale(2) */
+@keyframes flagman-logo-pulse-mobile {
+  0%,
+  100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(2);
+  }
+}
+
+/* Apply mobile-specific animation on screens smaller than 768px */
+@media (min-width: 768px) {
+  .flagman-logo-pulse {
+    animation: flagman-logo-pulse-mobile 4s ease-in-out infinite;
+  }
+}
+
+/* Keep the existing pulse-outline animations in case they're used elsewhere */
+@keyframes pulse-outline {
+  0% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.03);
+  }
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse-outline-delayed {
+  0% {
+    opacity: 0.2;
+    transform: scale(1.02);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0.2;
+    transform: scale(1.02);
+  }
+}
+
+.animate-pulse-outline {
+  animation: pulse-outline 3s ease-in-out infinite;
+}
+
+.animate-pulse-outline-delayed {
+  animation: pulse-outline-delayed 3s ease-in-out infinite;
+  animation-delay: 1.5s;
+}
+
+.animate-pulse-slow {
+  animation: pulse 4s ease-in-out infinite;
+}
+
+/* Glass effect */
+.glass-effect {
+  background: rgba(26, 26, 46, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive font sizes */
+.responsive-heading {
+  font-size: clamp(2rem, 5vw, 4rem);
+}
+
+.responsive-subheading {
+  font-size: clamp(1.2rem, 3vw, 2rem);
+}
+
+/* Accessibility focus styles */
+button:focus,
+a:focus {
+  outline: 2px solid var(--primary-red);
+  outline-offset: 2px;
+}
+
+/* Font family utility */
+.font-montserrat {
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+/* Scale utilities for zoom animation */
+.scale-100 {
+  transform: scale(1);
+}
+
+.scale-115 {
+  transform: scale(1.15);
+}
+
+/* Mobile-specific max-w-4xl override */
+@media (max-width: 767px) {
+  .max-w-4xl {
+    padding-top: 10%;
+    max-width: 56rem;
+  }
+}
+
+/* Desktop px-4 override - for hero section */
+@media (min-width: 768px) {
+  .px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-top: 5%;
+  }
+}
+
+/* New px-4-social class for social section - no margin-top */
+@media (min-width: 768px) {
+  .px-4-social {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-top: 0%;
+  }
+}
+
+/* Loading overlay fade out animation */
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* Circular reveal animation */
+.circular-reveal-enter {
+  clip-path: circle(0% at 50% 50%);
+}
+
+.circular-reveal-exit {
+  clip-path: circle(150% at 50% 50%);
+  transition: clip-path 1.5s ease-in-out;
+}
+
+/* Ensure smooth hardware acceleration */
+.circular-reveal-overlay {
+  will-change: clip-path;
+  transform: translateZ(0);
+}
+
+.leading-tight {
+  line-height: 1.0;
+}
+
+/* Realistic Blue Neon Frame Effect with Smooth Hover Transitions */
+.neon-frame-blue {
+  position: relative;
+  border: 2px solid #00bfff;
+  /* Inner glow */
+  box-shadow: inset 0 0 10px #00bfff, inset 0 0 20px #0080ff, inset 0 0 30px #0040ff, /* Outer glow */ 0 0 10px #00bfff,
+    0 0 20px #00bfff, 0 0 30px #0080ff, 0 0 40px #0080ff, 0 0 50px #0040ff;
+
+  animation: neon-pulse-blue 2s ease-in-out infinite alternate;
+  transition: all 0.7s ease-out;
+}
+
+.neon-frame-blue:hover {
+  animation: neon-flicker-blue 0.15s ease-in-out infinite alternate;
+  border-color: #40d0ff;
+  box-shadow: inset 0 0 20px #40d0ff, inset 0 0 30px #20a0ff, inset 0 0 40px #1060ff, 0 0 20px #40d0ff, 0 0 30px #40d0ff,
+    0 0 40px #20a0ff, 0 0 50px #20a0ff, 0 0 60px #1060ff;
+}
+
+/* Main pulsing animation */
+@keyframes neon-pulse-blue {
+  0% {
+    border-color: #00bfff;
+    box-shadow: inset 0 0 8px #00bfff, inset 0 0 16px #0080ff, inset 0 0 24px #0040ff, 0 0 8px #00bfff, 0 0 16px #00bfff,
+      0 0 24px #0080ff, 0 0 32px #0080ff, 0 0 40px #0040ff;
+  }
+  100% {
+    border-color: #40d0ff;
+    box-shadow: inset 0 0 15px #40d0ff, inset 0 0 25px #20a0ff, inset 0 0 35px #1060ff, 0 0 15px #40d0ff, 0 0 25px
+      #40d0ff, 0 0 35px #20a0ff, 0 0 45px #20a0ff, 0 0 55px #1060ff;
+  }
+}
+
+/* Smoother flickering effect on hover */
+@keyframes neon-flicker-blue {
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
+    border-color: #40d0ff;
+    box-shadow: inset 0 0 20px #40d0ff, inset 0 0 30px #20a0ff, inset 0 0 40px #1060ff, 0 0 20px #40d0ff, 0 0 30px
+      #40d0ff, 0 0 40px #20a0ff, 0 0 50px #20a0ff, 0 0 60px #1060ff;
+  }
+  20%,
+  24%,
+  55% {
+    border-color: #60e0ff;
+    box-shadow: inset 0 0 25px #60e0ff, inset 0 0 35px #40c0ff, inset 0 0 45px #2080ff, 0 0 25px #60e0ff, 0 0 35px
+      #60e0ff, 0 0 45px #40c0ff, 0 0 55px #40c0ff, 0 0 65px #2080ff;
+  }
+}
+
+/* Enhanced outer glow for smoother transitions */
+.neon-frame-blue::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  background: transparent;
+  border: 1px solid rgba(0, 191, 255, 0.3);
+  border-radius: inherit;
+  box-shadow: 0 0 20px rgba(0, 191, 255, 0.4), 0 0 40px rgba(0, 128, 255, 0.3), 0 0 60px rgba(0, 64, 255, 0.2);
+  animation: neon-outer-glow-blue 3s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: -1;
+  transition: all 0.7s ease-out;
+}
+
+.neon-frame-blue:hover::before {
+  box-shadow: 0 0 30px rgba(64, 208, 255, 0.6), 0 0 60px rgba(32, 160, 255, 0.5), 0 0 90px rgba(16, 96, 255, 0.4);
+}
+
+@keyframes neon-outer-glow-blue {
+  0% {
+    box-shadow: 0 0 15px rgba(0, 191, 255, 0.3), 0 0 30px rgba(0, 128, 255, 0.2), 0 0 45px rgba(0, 64, 255, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 25px rgba(64, 208, 255, 0.5), 0 0 50px rgba(32, 160, 255, 0.4), 0 0 75px rgba(16, 96, 255, 0.3);
+  }
+}
+
+/* Pulsing Cursor Animation */
+.cursor-pulse {
+  animation: cursor-pulse-glow 2s ease-in-out infinite;
+}
+
+/* Added faster cursor pulse animation */
+.cursor-pulse-fast {
+  animation: cursor-pulse-glow-fast 1.5s ease-in-out infinite;
+}
+
+@keyframes cursor-pulse-glow {
+  0% {
+    opacity: 0.7;
+    transform: scale(1);
+    filter: drop-shadow(0 0 5px rgba(0, 191, 255, 0.6));
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 15px rgba(0, 191, 255, 1)) drop-shadow(0 0 25px rgba(0, 191, 255, 0.8));
+  }
+  100% {
+    opacity: 0.7;
+    transform: scale(1);
+    filter: drop-shadow(0 0 5px rgba(0, 191, 255, 0.6));
+  }
+}
+
+/* Added faster cursor pulse keyframes */
+@keyframes cursor-pulse-glow-fast {
+  0% {
+    opacity: 0.7;
+    transform: scale(1);
+    filter: drop-shadow(0 0 5px rgba(0, 191, 255, 0.6));
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 20px rgba(0, 191, 255, 1)) drop-shadow(0 0 30px rgba(0, 191, 255, 0.9));
+  }
+  100% {
+    opacity: 0.7;
+    transform: scale(1);
+    filter: drop-shadow(0 0 5px rgba(0, 191, 255, 0.6));
+  }
+}
+
+/* Floating Orbs Background Animation */
+.floating-orbs-bg {
+  animation: floating-orbs-1 8s ease-in-out infinite;
+}
+
+.floating-orbs-bg-2 {
+  animation: floating-orbs-2 10s ease-in-out infinite;
+}
+
+.floating-orbs-bg-3 {
+  animation: floating-orbs-3 12s ease-in-out infinite;
+}
+
+@keyframes floating-orbs-1 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.3;
+  }
+  25% {
+    transform: translate(20px, -15px) scale(1.2);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-10px, -25px) scale(0.8);
+    opacity: 0.4;
+  }
+  75% {
+    transform: translate(15px, -10px) scale(1.1);
+    opacity: 0.5;
+  }
+}
+
+@keyframes floating-orbs-2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.25;
+  }
+  30% {
+    transform: translate(-18px, -20px) scale(1.3);
+    opacity: 0.5;
+  }
+  60% {
+    transform: translate(12px, -30px) scale(0.9);
+    opacity: 0.35;
+  }
+  90% {
+    transform: translate(-8px, -12px) scale(1.15);
+    opacity: 0.45;
+  }
+}
+
+@keyframes floating-orbs-3 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.2;
+  }
+  20% {
+    transform: translate(25px, -18px) scale(0.7);
+    opacity: 0.4;
+  }
+  40% {
+    transform: translate(-15px, -35px) scale(1.4);
+    opacity: 0.6;
+  }
+  70% {
+    transform: translate(10px, -22px) scale(1.1);
+    opacity: 0.3;
+  }
+}
+
+/* Enhanced Neon Rays Effect */
+.neon-rays {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at center,
+    transparent 30%,
+    rgba(0, 191, 255, 0.1) 40%,
+    rgba(0, 191, 255, 0.05) 50%,
+    transparent 60%
+  );
+  transform: translate(-50%, -50%) rotate(0deg);
+  animation: neon-rays-rotate 20s linear infinite;
+  pointer-events: none;
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+@keyframes neon-rays-rotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(180deg) scale(1.1);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg) scale(1);
+  }
+}
